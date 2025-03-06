@@ -35,7 +35,6 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
-        //System.out.println(memberName + " is now entered");
     }
 
     public int getId() {
@@ -45,8 +44,6 @@ public class Member {
 
     public void setId(int id) {
         this.id = id;
-        //System.out.println("Your ID is: " + "0000" + memberId)
-        //System.out.println(name + "'s ID number is" + memberId);
     }
 
     public int getAge() {
@@ -55,7 +52,6 @@ public class Member {
 
     public void setAge(int age) {
         this.age = age;
-        //System.out.println(memberName + "is" + age);
     }
 
     public String getGender() {
@@ -64,7 +60,6 @@ public class Member {
 
     public void setGender(String gender) {
         this.gender = gender;
-        //System.out.println(memberName + "is" + gender);
     }
 
     public boolean hasOverdueBook() {

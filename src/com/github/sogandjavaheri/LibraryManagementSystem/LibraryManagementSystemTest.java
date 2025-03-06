@@ -61,16 +61,3 @@ public class LibraryManagementSystemTest {
         }
     }
 }
-
-//        library.createMember(scanner);
-//        System.out.println();
-//
-//        library.readMember(scanner);
-//        System.out.println();
-//
-//        library.updateMember(scanner);
-//        System.out.println();
-//
-//        library.deleteMember(scanner);
-//        System.out.println();
-//        System.out.println("*****************");

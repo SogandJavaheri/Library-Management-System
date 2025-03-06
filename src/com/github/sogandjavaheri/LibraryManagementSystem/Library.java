@@ -51,7 +51,7 @@ public class Library {
             return;
         }
 
-        System.out.println("\nEnter the ID you want to read: ");
+        System.out.println("Enter the ID you want to read: ");
         int id = scanner.nextInt();
         scanner.nextLine();
 
@@ -136,9 +136,9 @@ public class Library {
             System.out.println("Library is full, cannot add more books.");
             return;
         }
-        System.out.print("Enter book title: ");
+        System.out.println("Enter book title: ");
         String title = scanner.nextLine();
-        System.out.print("Enter book author: ");
+        System.out.println("Enter book author: ");
         String author = scanner.nextLine();
 
         books[bookCount++] = new Book(bookIdCounter++, title, author);
@@ -151,13 +151,13 @@ public class Library {
             return;
         }
 
-        System.out.println("\nEnter book ID: ");
+        System.out.println("Enter book ID: ");
         int code = scanner.nextInt();
         scanner.nextLine();
 
         for (int i = 0; i < bookCount; i++) {
             if (books[i].getCode() == code-1) {
-                System.out.println("\nDetails are below: ");
+                System.out.println("Details are below: ");
                 books[i].printBookInfo();
             }
             else
@@ -166,7 +166,7 @@ public class Library {
     }
 
     public void updateBook(Scanner scanner) {
-        System.out.print("Enter the book ID to update: ");
+        System.out.println("Enter the book ID to update: ");
         int id = scanner.nextInt();
         scanner.nextLine();
         updateTitle(id);
@@ -177,7 +177,7 @@ public class Library {
     public void updateTitle(int id) {
         for (int i = 0; i < bookCount; i++) {
             if (books[i].getCode() == id) {
-                System.out.print("Enter new title: ");
+                System.out.println("Enter new title: ");
                 Scanner title1 = new Scanner(System.in);
                 books[i].setTitle(title1.nextLine());
             }
@@ -188,7 +188,7 @@ public class Library {
     public void updateAuthor(int id) {
         for (int i = 0; i < bookCount; i++) {
             if (books[i].getCode() == id) {
-                System.out.print("Enter new author: ");
+                System.out.println("Enter new author: ");
                 Scanner author1 = new Scanner(System.in);
                 books[i].setAuthor(author1.nextLine());
             }
@@ -197,7 +197,7 @@ public class Library {
     }
 
     public void deleteBook(Scanner scanner) {
-        System.out.print("Enter the book ID to delete: ");
+        System.out.println("Enter the book ID to delete: ");
         int id = scanner.nextInt();
         scanner.nextLine();
 
@@ -213,7 +213,7 @@ public class Library {
     }
 
     public void borrowBook(Scanner scanner) {
-        System.out.print("Enter book ID: ");
+        System.out.println("Enter book ID: ");
         int bookId = scanner.nextInt();
         scanner.nextLine();
 
@@ -232,7 +232,7 @@ public class Library {
     }
 
     public void returnBook(Scanner scanner) {
-        System.out.print("Enter book ID: ");
+        System.out.println("Enter book ID: ");
         int bookId = scanner.nextInt();
         scanner.nextLine();
 
