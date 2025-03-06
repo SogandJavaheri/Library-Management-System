@@ -12,13 +12,12 @@ public class LibraryManagementSystemTest {
         Book book = new Book();
 
 
-        System.out.println("Choose between *Book* and *Member*.");
-        String choice = scanner.nextLine();
+        System.out.println("Choose between 1.Book and 2.Member");
+        int choice = scanner.nextInt();
 
-        if (choice.equals("Book")) {
-            while (true) {
-                System.out.println("Choose the operation.");
-                System.out.print("\n1.Create \t2.Read \t3.Update \t4.Delete \t5.Exit ");
+        if (choice == 1) {
+                System.out.println("Choose the operation: ");
+                System.out.println("1.Create  2.Read  3.Update  4.Delete  5.Exit ");
                 int choice2 = scanner.nextInt();
                 scanner.nextLine();
 
@@ -36,15 +35,12 @@ public class LibraryManagementSystemTest {
 
                 else
                     System.out.println("Invalid choice. Try again.");
-
-                break;
             }
-        }
 
-        else if (choice.equals("Member")) {
-            while (true) {
-                System.out.println("Choose the operation.");
-                System.out.print("\n1.Create \t2. Read \t3. Update \t4. Delete \t5. Exit ");
+
+        else if (choice == 2) {
+                System.out.println("Choose the operation: ");
+                System.out.println("1.Create  2.Read  3.Update  4.Delete  5.Exit ");
                 int choice2 = scanner.nextInt();
                 scanner.nextLine();
 
@@ -62,9 +58,6 @@ public class LibraryManagementSystemTest {
 
                 else
                     System.out.println("Invalid choice. Try again.");
-
-                break;
-            }
         }
     }
 }

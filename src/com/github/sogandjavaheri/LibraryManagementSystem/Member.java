@@ -6,10 +6,11 @@ public class Member {
     private int id;
     private int age;
     private String gender;
+    private boolean hasOverdueBook;
 
 
     public Member() {
-        this("Anonymous ", 0, "Male/Female");
+        this("Anonymous", 0, "Male/Female");
 
     }
 
@@ -19,11 +20,13 @@ public class Member {
         this.gender = gender;
     }
 
+
     public Member(int id, String name, int age, String gender) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.gender = gender;
+        this.hasOverdueBook = false;
     }
 
     public String getName() {
@@ -64,8 +67,16 @@ public class Member {
         //System.out.println(memberName + "is" + gender);
     }
 
+    public boolean hasOverdueBook() {
+        return hasOverdueBook;
+    }
+
+    public void setOverdueBook(boolean overdue) {
+        this.hasOverdueBook = overdue;
+    }
+
     public void printMemberInfo() {
-        System.out.println(name + " is a " + gender + " and " + age + " years old." );
+        System.out.println("ID: " + id + ", Name: " + name + ", Age: " + age + ", Gender: " + gender);
     }
 
     public void printId(){

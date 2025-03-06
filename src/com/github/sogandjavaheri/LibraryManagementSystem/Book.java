@@ -5,6 +5,7 @@ public class Book {
     private String title;
     private String author;
     private int code;
+    private boolean isBorrowed;
 
 
     public Book() {
@@ -14,6 +15,12 @@ public class Book {
     public Book(String title, String author){
         this.title = title;
         this.author = author;
+    }
+
+    public Book(int code, String title) {
+        this.code = code;
+        this.title = title;
+        this.isBorrowed = false;
     }
 
     public Book(int code, String title, String author) {
@@ -46,9 +53,18 @@ public class Book {
         this.code = code;
     }
 
+    public boolean isBorrowed() {
+        return isBorrowed;
+    }
+
+    public void setBorrowed(boolean borrowed) {
+        isBorrowed = borrowed;
+    }
+
     public void printBookInfo(){
         System.out.println("Title: " + title);
         System.out.println("Author: " + author);
         System.out.println("ID: " + code);
     }
 }
+

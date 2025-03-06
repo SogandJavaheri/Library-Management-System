@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Library {
 
     private Member[] members;
-    private int memberCounter;
+    private int memberCount;
     private int memberIdCounter;
     private Book[] books;
     private int bookCount;
@@ -14,7 +14,7 @@ public class Library {
 
     public Library() {
         members = new Member[1000];
-        memberCounter = 0;
+        memberCount = 0;
         memberIdCounter = 0;
         books = new Book[10000];
         bookCount = 0;
@@ -24,7 +24,7 @@ public class Library {
 
     public void createMember(Scanner scanner) {
 
-        if (memberCounter >= members.length) {
+        if (memberCount >= members.length) {
             System.out.println("The library is full");
             return;
         }
@@ -40,13 +40,13 @@ public class Library {
         String gender = scanner.nextLine();
 
 
-        members[memberCounter++] = new Member(memberIdCounter++, name, age, gender);
+        members[memberCount++] = new Member(memberIdCounter++, name, age, gender);
         System.out.println(name + "'s ID is: " + memberIdCounter);
 
     }
 
     public void readMember(Scanner scanner) {
-        if (memberCounter == 0) {
+        if (memberCount == 0) {
             System.out.println("No members found.");
             return;
         }
@@ -55,7 +55,7 @@ public class Library {
         int id = scanner.nextInt();
         scanner.nextLine();
 
-        for (int i = 0; i < memberCounter; i++) {
+        for (int i = 0; i < memberCount; i++) {
             if (members[i].getId() == id-1) {
                 System.out.println("\nDetails are below: ");
                 members[i].printMemberInfo();
@@ -79,7 +79,7 @@ public class Library {
     }
 
     public void updateName(int id) {
-        for (int i = 0; i < memberCounter; i++) {
+        for (int i = 0; i < memberCount; i++) {
             if (members[i].getId() == id-1) {
                 System.out.println("Enter new name: ");
                 Scanner name1 = new Scanner(System.in);
@@ -91,7 +91,7 @@ public class Library {
     }
 
     public void updateAge(int id) {
-        for (int i = 0; i < memberCounter; i++) {
+        for (int i = 0; i < memberCount; i++) {
             if (members[i].getId() == id-1) {
                 System.out.println("Enter new age: ");
                 Scanner age1 = new Scanner(System.in);
@@ -103,7 +103,7 @@ public class Library {
     }
 
     public void updateGender(int id) {
-        for (int i = 0; i < memberCounter; i++) {
+        for (int i = 0; i < memberCount; i++) {
             if (members[i].getId() == id-1) {
                 System.out.println("Enter new gender: ");
                 Scanner gender1 = new Scanner(System.in);
@@ -119,10 +119,10 @@ public class Library {
         int id = scanner.nextInt();
         scanner.nextLine();
 
-        for (int i = 0; i < memberCounter; i++) {
+        for (int i = 0; i < memberCount; i++) {
             if (members[i].getId() == id) {
-                members[i] = members[memberCounter-1];
-                members[memberCounter--] = null;
+                members[i] = members[memberCount -1];
+                members[memberCount--] = null;
                 System.out.println("Member deleted successfully.");
                 return;
             }
@@ -210,5 +210,52 @@ public class Library {
             }
         }
         System.out.println("Book not found.");
+    }
+
+    public void borrowBook(Scanner scanner) {
+        System.out.print("Enter book ID: ");
+        int bookId = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i].getCode() == bookId) {
+                if (!books[i].isBorrowed()) {
+                    books[i].setBorrowed(true);
+                    System.out.println("Book borrowed successfully!");
+                } else {
+                    System.out.println("Book is already borrowed.");
+                }
+                return;
+            }
+        }
+        System.out.println("Book not found.");
+    }
+
+    public void returnBook(Scanner scanner) {
+        System.out.print("Enter book ID: ");
+        int bookId = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i].getCode() == bookId) {
+                if (books[i].isBorrowed()) {
+                    books[i].setBorrowed(false);
+                    System.out.println("Book returned successfully!");
+                } else {
+                    System.out.println("This book was not borrowed.");
+                }
+                return;
+            }
+        }
+        System.out.println("Book not found.");
+    }
+
+    public void listOverdueMembers() {
+        System.out.println("Members with overdue books:");
+        for (int i = 0; i < memberCount; i++) {
+            if (members[i].hasOverdueBook()) {
+                members[i].printMemberInfo();
+            }
+        }
     }
 }
