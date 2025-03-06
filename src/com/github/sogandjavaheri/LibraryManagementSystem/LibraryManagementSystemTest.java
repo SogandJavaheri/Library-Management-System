@@ -6,52 +6,78 @@ public class LibraryManagementSystemTest {
 
     public static void main(String[] args) {
 
-//        Member[] members = new Member[2];
-//
-//        members[0] = new Member("Sogand Javaheri", 26, "F");
-//        members[0].setId(0001);
-//        members[0].printMemberInfo();
-//        members[0].printId();
-//
-//        System.out.println("*****************");
-//
-//        members[1] = new Member("Leyla Mansoori", 26, "F");
-//        members[1].setId(0002);
-//        members[1].printMemberInfo();
-//        members[1].printId();
-//
-//        System.out.println("*****************");
-
         Scanner scanner = new Scanner(System.in);
         Library library = new Library();
         Member member = new Member();
-
-        library.createMember(scanner);
-        System.out.println();
-
-        library.readMember(scanner);
-        System.out.println();
-
-        library.updateMember(scanner);
-        System.out.println();
-
-        library.deleteMember(scanner);
-        System.out.println();
-        System.out.println("*****************");
+        Book book = new Book();
 
 
-//        while (true){
-//            System.out.print("\n1.Create Member \t2. Read Members \t3. Update Members \t4. Delete Members \t5. Exit ");
-//            int choice = scanner.nextInt();
-//            scanner.nextLine();
-//
-//            switch (choice) {
-//                case 1:library.create(scanner);
-//                case 2:library.read(scanner);
-//                case 3:library.update(scanner);
-//                case 4:library.delete(scanner);
-//                break;
-//            }
-//        }
+        System.out.println("Choose between *Book* and *Member*.");
+        String choice = scanner.nextLine();
+
+        if (choice.equals("Book")) {
+            while (true) {
+                System.out.println("Choose the operation.");
+                System.out.print("\n1.Create \t2.Read \t3.Update \t4.Delete \t5.Exit ");
+                int choice2 = scanner.nextInt();
+                scanner.nextLine();
+
+                if (choice2 == 1)
+                    library.createBook(scanner);
+
+                else if (choice2 == 2)
+                    library.readBook(scanner);
+
+                else if (choice2 == 3)
+                    library.updateBook(scanner);
+
+                else if (choice2 == 4)
+                    library.deleteBook(scanner);
+
+                else
+                    System.out.println("Invalid choice. Try again.");
+
+                break;
+            }
+        }
+
+        else if (choice.equals("Member")) {
+            while (true) {
+                System.out.println("Choose the operation.");
+                System.out.print("\n1.Create \t2. Read \t3. Update \t4. Delete \t5. Exit ");
+                int choice2 = scanner.nextInt();
+                scanner.nextLine();
+
+                if (choice2 == 1)
+                    library.createMember(scanner);
+
+                else if (choice2 == 2)
+                    library.readMember(scanner);
+
+                else if (choice2 == 3)
+                    library.updateMember(scanner);
+
+                else if (choice2 == 4)
+                    library.deleteMember(scanner);
+
+                else
+                    System.out.println("Invalid choice. Try again.");
+
+                break;
+            }
+        }
     }
 }
+
+//        library.createMember(scanner);
+//        System.out.println();
+//
+//        library.readMember(scanner);
+//        System.out.println();
+//
+//        library.updateMember(scanner);
+//        System.out.println();
+//
+//        library.deleteMember(scanner);
+//        System.out.println();
+//        System.out.println("*****************");
