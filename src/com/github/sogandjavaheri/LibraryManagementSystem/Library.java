@@ -2,21 +2,27 @@ package com.github.sogandjavaheri.LibraryManagementSystem;
 
 import java.util.Scanner;
 
-public class LibraryManagementSystem {
+public class Library {
 
     private Member[] members;
     private int memberCounter;
     private int memberIdCounter;
+    private Book[] books;
+    private int bookCount;
+    private int bookIdCounter;
 
 
-    public LibraryManagementSystem() {
+    public Library() {
         members = new Member[1000];
         memberCounter = 0;
-        memberIdCounter = 0000;
+        memberIdCounter = 0;
+        books = new Book[10000];
+        bookCount = 0;
+        bookIdCounter = 0;
     }
 
 
-    public void create(Scanner scanner) {
+    public void createMember(Scanner scanner) {
 
         if (memberCounter >= members.length) {
             System.out.println("The library is full");
@@ -39,7 +45,7 @@ public class LibraryManagementSystem {
 
     }
 
-    public void read(Scanner scanner) {
+    public void readMember(Scanner scanner) {
         if (memberCounter == 0) {
             System.out.println("No members found.");
             return;
@@ -59,7 +65,7 @@ public class LibraryManagementSystem {
         }
     }
 
-    public void update(Scanner scanner) {
+    public void updateMember(Scanner scanner) {
         System.out.println("Enter the ID you want to update: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -108,7 +114,7 @@ public class LibraryManagementSystem {
         }
     }
 
-    public void delete(Scanner scanner) {
+    public void deleteMember(Scanner scanner) {
         System.out.println("Enter the ID you want to delete: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -123,5 +129,86 @@ public class LibraryManagementSystem {
             else
                 System.out.println(id + " not found.");
         }
+    }
+
+    public void createBook(Scanner scanner) {
+        if (bookCount >= books.length) {
+            System.out.println("Library is full, cannot add more books.");
+            return;
+        }
+        System.out.print("Enter book title: ");
+        String title = scanner.nextLine();
+        System.out.print("Enter book author: ");
+        String author = scanner.nextLine();
+
+        books[bookCount++] = new Book(bookIdCounter++, title, author);
+        System.out.println("Book added successfully!");
+    }
+
+    public void readBook(Scanner scanner) {
+        if (bookCount == 0) {
+            System.out.println("No books found.");
+            return;
+        }
+
+        System.out.println("\nEnter book ID: ");
+        int code = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i].getCode() == code-1) {
+                System.out.println("\nDetails are below: ");
+                books[i].printBookInfo();
+            }
+            else
+                System.out.println(code + " not found.");
+        }
+    }
+
+    public void updateBook(Scanner scanner) {
+        System.out.print("Enter the book ID to update: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        updateTitle(id);
+        updateAuthor(id);
+        System.out.println("Book updated successfully!");
+    }
+
+    public void updateTitle(int id) {
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i].getCode() == id) {
+                System.out.print("Enter new title: ");
+                Scanner title1 = new Scanner(System.in);
+                books[i].setTitle(title1.nextLine());
+            }
+        }
+        System.out.println("Book not found.");
+    }
+
+    public void updateAuthor(int id) {
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i].getCode() == id) {
+                System.out.print("Enter new author: ");
+                Scanner author1 = new Scanner(System.in);
+                books[i].setAuthor(author1.nextLine());
+            }
+        }
+        System.out.println("Book not found.");
+    }
+
+    public void deleteBook(Scanner scanner) {
+        System.out.print("Enter the book ID to delete: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i].getCode() == id) {
+                books[i] = books[bookCount - 1];
+                books[--bookCount] = null;
+                System.out.println("Book deleted successfully!");
+                return;
+            }
+        }
+        System.out.println("Book not found.");
     }
 }

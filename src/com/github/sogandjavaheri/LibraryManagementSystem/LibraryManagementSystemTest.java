@@ -23,19 +23,19 @@ public class LibraryManagementSystemTest {
 //        System.out.println("*****************");
 
         Scanner scanner = new Scanner(System.in);
-        LibraryManagementSystem library = new LibraryManagementSystem();
+        Library library = new Library();
         Member member = new Member();
 
-        library.create(scanner);
+        library.createMember(scanner);
         System.out.println();
 
-        library.read(scanner);
+        library.readMember(scanner);
         System.out.println();
 
-        library.update(scanner);
+        library.updateMember(scanner);
         System.out.println();
 
-        library.delete(scanner);
+        library.deleteMember(scanner);
         System.out.println();
         System.out.println("*****************");
 
