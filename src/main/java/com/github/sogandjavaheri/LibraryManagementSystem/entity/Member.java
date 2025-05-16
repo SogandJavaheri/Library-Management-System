@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 
 public class Member extends Person implements Serializable {
-    private static int counter = 1000;
+    private static int counter = 1000000;
     private CustomLinkedList<Book> borrowedBooks;
 
     public Member(String name, Gender gender) {
