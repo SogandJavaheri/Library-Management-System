@@ -8,6 +8,29 @@ public class Book extends Entity implements Serializable {
     private static int counter = 1000000;
     private String name;
     private CustomLinkedList<Member> borrowers;
+    private String title;
+    private String author;
+
+    public Book(int id, String title, String author) {
+        super(id);
+        this.title = title;
+        this.author = author;
+    }
+
+    public Book(String title, String author, int bookCounter) {
+        super(bookCounter);
+        this.title = title;
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public Book(int id, String author) {
+        super(id);
+        this.author = author;
+    }
 
     public Book(String name) {
         super(counter++);
@@ -38,5 +61,9 @@ public class Book extends Entity implements Serializable {
 
     public String toString() {
         return getId() + "," + name;
+    }
+
+    public String getTitle() {
+        return getName();
     }
 }

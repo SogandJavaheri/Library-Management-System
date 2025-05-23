@@ -9,6 +9,8 @@ import com.github.sogandjavaheri.LibraryManagementSystem.linkedList.CustomLinked
 import com.github.sogandjavaheri.LibraryManagementSystem.exception.InvalidEntityException;
 import com.github.sogandjavaheri.LibraryManagementSystem.entity.Member;
 
+import java.util.Scanner;
+
 
 public class Library {
     private final CustomLinkedList<Book> books;
@@ -21,12 +23,20 @@ public class Library {
         this.fileManager = fileManager;
     }
 
-    public void loadData() {
-        fileManager.loadData(members, books);
+    public void saveMembers() {
+        fileManager.saveMembers(members);
     }
 
-    public void saveData() {
-        fileManager.saveData(members, books);
+    public void saveBooks() {
+        fileManager.saveBooks(books);
+    }
+
+    public void loadMembers() {
+        fileManager.loadMembers();
+    }
+
+    public void loadBooks() {
+        fileManager.loadBooks();
     }
 
     public void addBook(String name) {
@@ -79,5 +89,13 @@ public class Library {
             if (books.get(i).getId() == id) return books.get(i);
         }
         throw new EntityNotFoundException("Book with ID " + id + " not found.");
+    }
+
+    public void printAllMembers() {
+        System.out.println(members.toString());
+    }
+
+    public void printAllBooks() {
+        System.out.println(books.toString());
     }
 }

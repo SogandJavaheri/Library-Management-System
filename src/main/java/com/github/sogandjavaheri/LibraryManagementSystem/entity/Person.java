@@ -13,6 +13,11 @@ public abstract class Person extends Entity {
         this.gender = gender;
     }
 
+    public Person(int id, String name) {
+        super(id);
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

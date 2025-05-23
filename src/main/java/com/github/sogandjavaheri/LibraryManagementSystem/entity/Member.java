@@ -9,11 +9,23 @@ import java.io.Serializable;
 public class Member extends Person implements Serializable {
     private static int counter = 1000000;
     private CustomLinkedList<Book> borrowedBooks;
+    private Gender gender;
+
 
     public Member(String name, Gender gender) {
         super(counter++, name, gender);
         this.borrowedBooks = new CustomLinkedList<>();
     }
+    public Member(int id, String name, Gender gender) {
+        super(id, name);
+        this.gender = gender;
+    }
+
+    public Member(String name, Gender gender, int memberCounter) {
+        super(memberCounter, name);
+        this.gender = gender;
+    }
+
 
     public void addBorrowedBook(Book book) {
         borrowedBooks.add(book);

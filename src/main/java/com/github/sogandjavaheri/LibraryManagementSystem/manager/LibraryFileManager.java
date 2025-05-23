@@ -5,7 +5,11 @@ import com.github.sogandjavaheri.LibraryManagementSystem.entity.Member;
 import com.github.sogandjavaheri.LibraryManagementSystem.entity.Book;
 
 public interface LibraryFileManager {
-    void saveData(CustomLinkedList<Member> members, CustomLinkedList<Book> books);
-    void loadData(CustomLinkedList<Member> members, CustomLinkedList<Book> books);
+    public void saveMembers(CustomLinkedList<Member> members);
+
+    public void saveBooks(CustomLinkedList<Book> books);
+
+    CustomLinkedList<Member> loadMembers();
+    CustomLinkedList<Book> loadBooks();
 }
 
