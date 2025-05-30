@@ -11,8 +11,6 @@ import com.github.sogandjavaheri.LibraryManagementSystem.manager.TextLibraryFile
 import java.util.Scanner;
 
 
-import java.util.Scanner;
-
 public class LibrarySystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
