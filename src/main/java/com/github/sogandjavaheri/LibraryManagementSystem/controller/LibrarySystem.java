@@ -11,10 +11,11 @@ import com.github.sogandjavaheri.LibraryManagementSystem.manager.TextLibraryFile
 import java.util.Scanner;
 
 
+import java.util.Scanner;
+
 public class LibrarySystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
 
         System.out.println("Choose File Manager: 1. Text  2. Serializable");
         int choice = Integer.parseInt(scanner.nextLine());
@@ -48,20 +49,28 @@ public class LibrarySystem {
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1 -> {
-                    library.addMember(scanner);
+                    System.out.print("Enter member name: ");
+                    String memberName = scanner.nextLine();
+                    library.addMember(memberName);
                     library.saveMembers();
                 }
                 case 2 -> {
-                    library.addBook(String.valueOf(scanner));
+                    System.out.print("Enter book title: ");
+                    String bookTitle = scanner.nextLine();
+                    library.addBook(bookTitle);
                     library.saveBooks();
                 }
                 case 3 -> {
-                    library.borrowBook(scanner);
+                    System.out.print("Enter book title to borrow: ");
+                    String borrowTitle = scanner.nextLine();
+                    library.borrowBook(borrowTitle);
                     library.saveMembers();
                     library.saveBooks();
                 }
                 case 4 -> {
-                    library.returnBook(scanner);
+                    System.out.print("Enter book title to return: ");
+                    String returnTitle = scanner.nextLine();
+                    library.returnBook(returnTitle);
                     library.saveMembers();
                     library.saveBooks();
                 }

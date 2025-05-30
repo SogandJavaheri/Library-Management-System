@@ -47,4 +47,9 @@ public class CustomLinkedList<T> {
         }
         size--;
     }
+
+    public void clear() {
+        head = null;
+        size = 0;
+    }
 }

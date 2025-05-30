@@ -2,14 +2,11 @@ package com.github.sogandjavaheri.LibraryManagementSystem.controller;
 
 
 import com.github.sogandjavaheri.LibraryManagementSystem.entity.Book;
-import com.github.sogandjavaheri.LibraryManagementSystem.enumeration.Gender;
 import com.github.sogandjavaheri.LibraryManagementSystem.exception.EntityNotFoundException;
 import com.github.sogandjavaheri.LibraryManagementSystem.manager.LibraryFileManager;
 import com.github.sogandjavaheri.LibraryManagementSystem.linkedList.CustomLinkedList;
 import com.github.sogandjavaheri.LibraryManagementSystem.exception.InvalidEntityException;
 import com.github.sogandjavaheri.LibraryManagementSystem.entity.Member;
-
-import java.util.Scanner;
 
 
 public class Library {
@@ -32,70 +29,96 @@ public class Library {
     }
 
     public void loadMembers() {
-        fileManager.loadMembers();
+        CustomLinkedList<Member> loadedMembers = fileManager.loadMembers();
+        if (loadedMembers != null) {
+            this.members.clear();
+            for (int i = 0; i < loadedMembers.size(); i++) {
+                members.add(loadedMembers.get(i));
+            }
+        }
     }
 
     public void loadBooks() {
-        fileManager.loadBooks();
-    }
-
-    public void addBook(String name) {
-        books.add(new Book(name));
-    }
-
-    public void addMember(String name, Gender gender) {
-        members.add(new Member(name, gender));
-    }
-
-    public void borrowBook(int memberId, int bookId)
-            throws InvalidEntityException, EntityNotFoundException {
-        Member member = getMemberById(memberId);
-        Book book = getBookById(bookId);
-
-        if (book.getBorrowers().size() >= 1) {
-            throw new InvalidEntityException("Book is already borrowed.");
+        CustomLinkedList<Book> loadedBooks = fileManager.loadBooks();
+        if (loadedBooks != null) {
+            this.books.clear();
+            for (int i = 0; i < loadedBooks.size(); i++) {
+                books.add(loadedBooks.get(i));
+            }
         }
-
-        book.addBorrower(member);
-        member.addBorrowedBook(book);
     }
 
-    public void returnBook(int memberId, int bookId)
-            throws InvalidEntityException, EntityNotFoundException {
-        Member member = getMemberById(memberId);
-        Book book = getBookById(bookId);
-
-        book.removeBorrower(member);
-        member.removeBorrowedBook(book);
+    public void addBook(String title) {
+        books.add(new Book(title));
+        System.out.println("Book added: " + title);
     }
 
-    public CustomLinkedList<Book> getBooks() {
-        return books;
+    public void addMember(String name) {
+        members.add(new Member(name));
+        System.out.println("Member added: " + name);
     }
 
-    public CustomLinkedList<Member> getMembers() {
-        return members;
-    }
+    public void borrowBook(String bookTitle) {
+        try {
+            Book book = findBookByTitle(bookTitle);
+            if (book.getBorrowers().size() >= 1) {
+                System.out.println("Book is already borrowed.");
+                return;
+            }
 
-    public Member getMemberById(int id) throws EntityNotFoundException {
-        for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).getId() == id) return members.get(i);
+            if (members.size() == 0) {
+                System.out.println("No members available to borrow the book.");
+                return;
+            }
+            Member member = members.get(0);
+
+            book.addBorrower(member);
+            member.addBorrowedBook(book);
+            System.out.println("Book borrowed: " + bookTitle + " by " + member.getName());
+
+        } catch (EntityNotFoundException e) {
+            System.out.println(e.getMessage());
         }
-        throw new EntityNotFoundException("Member with ID " + id + " not found.");
     }
 
-    public Book getBookById(int id) throws EntityNotFoundException {
+    public void returnBook(String bookTitle) {
+        try {
+            Book book = findBookByTitle(bookTitle);
+            if (book.getBorrowers().size() == 0) {
+                System.out.println("Book is not borrowed.");
+                return;
+            }
+
+            Member member = book.getBorrowers().get(0);
+            book.removeBorrower(member);
+            member.removeBorrowedBook(book);
+            System.out.println("Book returned: " + bookTitle + " by " + member.getName());
+
+        } catch (EntityNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private Book findBookByTitle(String title) throws EntityNotFoundException {
         for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getId() == id) return books.get(i);
+            if (books.get(i).getTitle().equalsIgnoreCase(title)) {
+                return books.get(i);
+            }
         }
-        throw new EntityNotFoundException("Book with ID " + id + " not found.");
+        throw new EntityNotFoundException("Book with title '" + title + "' not found.");
     }
 
     public void printAllMembers() {
-        System.out.println(members.toString());
+        System.out.println("All Members:");
+        for (int i = 0; i < members.size(); i++) {
+            System.out.println(members.get(i));
+        }
     }
 
     public void printAllBooks() {
-        System.out.println(books.toString());
+        System.out.println("All Books:");
+        for (int i = 0; i < books.size(); i++) {
+            System.out.println(books.get(i));
+        }
     }
 }

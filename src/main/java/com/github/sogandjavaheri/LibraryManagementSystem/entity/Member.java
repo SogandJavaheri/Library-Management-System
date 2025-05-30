@@ -26,6 +26,9 @@ public class Member extends Person implements Serializable {
         this.gender = gender;
     }
 
+    public Member(String name) {
+        super(counter++, name);
+    }
 
     public void addBorrowedBook(Book book) {
         borrowedBooks.add(book);
