@@ -4,6 +4,7 @@ import com.github.sogandjavaheri.LibraryManagementSystem.linkedList.CustomLinked
 import com.github.sogandjavaheri.LibraryManagementSystem.entity.Member;
 import com.github.sogandjavaheri.LibraryManagementSystem.entity.Book;
 
+
 public interface LibraryFileManager {
     public void saveMembers(CustomLinkedList<Member> members);
 

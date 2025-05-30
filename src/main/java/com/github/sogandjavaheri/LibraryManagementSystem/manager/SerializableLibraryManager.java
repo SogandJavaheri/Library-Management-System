@@ -3,8 +3,8 @@ package com.github.sogandjavaheri.LibraryManagementSystem.manager;
 import com.github.sogandjavaheri.LibraryManagementSystem.linkedList.CustomLinkedList;
 import com.github.sogandjavaheri.LibraryManagementSystem.entity.Member;
 import com.github.sogandjavaheri.LibraryManagementSystem.entity.Book;
-
 import java.io.*;
+
 
 public class SerializableLibraryManager implements LibraryFileManager, Serializable {
     String fileName1 = "membersFile.txt";

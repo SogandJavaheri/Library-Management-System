@@ -1,5 +1,7 @@
 package com.github.sogandjavaheri.LibraryManagementSystem.entity;
+
 import java.io.Serializable;
+
 
 public abstract class Entity implements Serializable {
     private final int id;

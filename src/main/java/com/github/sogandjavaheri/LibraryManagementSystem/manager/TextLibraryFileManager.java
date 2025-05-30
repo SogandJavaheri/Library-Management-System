@@ -1,12 +1,11 @@
 package com.github.sogandjavaheri.LibraryManagementSystem.manager;
 
-import com.github.sogandjavaheri.LibraryManagementSystem.enumeration.Gender;
 import com.github.sogandjavaheri.LibraryManagementSystem.linkedList.CustomLinkedList;
 import com.github.sogandjavaheri.LibraryManagementSystem.entity.Member;
 import com.github.sogandjavaheri.LibraryManagementSystem.entity.Book;
 import com.github.sogandjavaheri.LibraryManagementSystem.linkedList.Node;
-
 import java.io.*;
+
 
 public class TextLibraryFileManager implements LibraryFileManager {
     String fileName1 = "membersFile.txt";

@@ -1,6 +1,6 @@
 package com.github.sogandjavaheri.LibraryManagementSystem.entity;
-import com.github.sogandjavaheri.LibraryManagementSystem.linkedList.CustomLinkedList;
 
+import com.github.sogandjavaheri.LibraryManagementSystem.linkedList.CustomLinkedList;
 import java.io.Serializable;
 
 

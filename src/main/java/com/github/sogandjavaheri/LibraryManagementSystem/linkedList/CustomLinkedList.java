@@ -1,5 +1,6 @@
 package com.github.sogandjavaheri.LibraryManagementSystem.linkedList;
 
+
 public class CustomLinkedList<T> {
     private Node<T> head;
     private int size = 0;
